@@ -27,7 +27,7 @@ RECORDOF(myData) RollThem(myData L, myData R) := TRANSFORM
 END;
 
 RolledUpRecs := ROLLUP(sortedData, 
-																							LEFT.Value1 = RIGHT.Value1,
-																							RollThem(LEFT, RIGHT));
+	LEFT.Value1 = RIGHT.Value1,
+	RollThem(LEFT, RIGHT));
 																							
 OUTPUT(RolledUpRecs);																							
