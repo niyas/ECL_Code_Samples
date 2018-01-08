@@ -12,7 +12,8 @@ myData := DATASET(
 		{'d','k',5},
 		{'a','f',8},
 		{'h','g',4},
-		{'i','c',2}
+		{'i','c',2},
+		{'a','g',9}
 	],
 	myRec
 );
@@ -21,13 +22,22 @@ myData := DATASET(
 sortedData := SORT(myData, Value1);
 
 RECORDOF(myData) RollThem(myData L, myData R) := TRANSFORM
-	SELF.Value3 := IF(L.Value3 < R.value3, L.Value3, R.Value3);
+	SELF.Value3 := IF(L.Value3 < R.value3, R.Value3, L.Value3);
 	SELF.Value2 := IF(L.Value2 < R.Value2, L.Value2, R.Value2);
 	SELF := L;
 END;
 
+//Call Rollup
 RolledUpRecs := ROLLUP(sortedData, 
 	LEFT.Value1 = RIGHT.Value1,
-	RollThem(LEFT, RIGHT));
+RollThem(LEFT, RIGHT));
+	
+//Add 100 to the value3	
+myRec add(myData L):= TRANSFORM
+	SELF.Value3 := L.Value3 + 100;
+	SELF := L;
+END;
+	
+finalData := PROJECT(RolledUpRecs, add(LEFT));
 																							
-OUTPUT(RolledUpRecs);																							
+OUTPUT(finalData);																							
