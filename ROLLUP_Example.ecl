@@ -7,14 +7,14 @@ END;
 
 //Create Dataset using recordset
 myData := DATASET(
-		[
-				{'a','b',1},
-				{'d','k',5},
-				{'a','f',8},
-				{'h','g',4},
-				{'i','c',2}
-		],
-		myRec
+	[
+		{'a','b',1},
+		{'d','k',5},
+		{'a','f',8},
+		{'h','g',4},
+		{'i','c',2}
+	],
+	myRec
 );
 
 //Sort the data based on value1
