@@ -1,4 +1,4 @@
 ﻿IMPORT $;
 
-MenInMStatePersons := $.Persons(State IN $.SetMStates, Gender = 'M');
-COUNT(MenInMStatePersons);
+EXPORT MenInMStatePersons := $.Persons(State IN $.SetMStates, Gender = 'M');
+
