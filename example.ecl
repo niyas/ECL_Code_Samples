@@ -1,4 +1,4 @@
-﻿
-IMPORT $;
+﻿IMPORT $;
 
-$.fn_Right4('Hai How are you?');
+filterd := $.searchPersons('Goslin',false);
+filterd.included;
